@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Concert Timetable Editor</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Noto+Serif+JP:wght@700;900&family=Roboto+Slab:wght@400;700&display=swap"
+        rel="stylesheet">
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="logo">
+                <h1>Sendai <span>Barbershop</span> Festival</h1>
+            </div>
+            <div class="header-actions">
+                <button id="add-stage-btn" class="btn secondary">Add Stage</button>
+                <button id="add-act-btn" class="btn primary">Add Act</button>
+                <button id="reset-btn" class="btn danger outline">Reset</button>
+                <button id="settings-btn" class="btn outline" title="Settings">⚙️</button>
+                <div class="divider-vertical"></div>
+                <button id="save-project-btn" class="btn outline">Save Project</button>
+                <button id="load-project-btn" class="btn outline">Load Project</button>
+                <input type="file" id="project-upload" accept=".json" style="display: none;">
+                <div class="divider-vertical"></div>
+                <button id="export-team-btn" class="btn secondary">Export Team</button>
+                <button id="export-btn" class="btn accent">Export Full</button>
+            </div>
+        </header>
+
+        <main class="timetable-workspace">
+            <div id="capture-target" class="capture-container">
+                <div class="time-axis-container">
+                    <!-- Time labels will be generated here -->
+                    <div id="time-labels" class="time-labels"></div>
+                </div>
+
+                <div id="stages-container" class="stages-container">
+                    <!-- Stages will be generated here -->
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Edit Act Modal -->
+    <div id="edit-modal" class="modal hidden">
+        <div class="modal-content">
+            <h2>Edit Act</h2>
+            <form id="act-form">
+                <input type="hidden" id="act-id">
+                <div class="form-group">
+                    <label for="act-name">Artist Name</label>
+                    <input type="text" id="act-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="act-category">Team / Category</label>
+                    <input type="text" id="act-category" placeholder="e.g. Quartet, Staff (comma separated)">
+                </div>
+                <div class="form-group">
+                    <label for="act-start">Start Time</label>
+                    <input type="time" id="act-start" required>
+                </div>
+                <div class="form-group">
+                    <label for="act-end">End Time</label>
+                    <input type="time" id="act-end" required>
+                </div>
+                <div class="form-group">
+                    <label for="act-color">Color</label>
+                    <input type="color" id="act-color" value="#3b82f6">
+                </div>
+                <div class="modal-actions">
+                    <button type="button" id="modal-cancel">Cancel</button>
+                    <button type="submit" id="modal-save" class="btn primary">Save</button>
+                    <button type="button" id="modal-delete" class="btn danger">Delete</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div id="settings-modal" class="modal hidden">
+        <div class="modal-content">
+            <h2>Timetable Settings</h2>
+            <form id="settings-form">
+                <div class="form-group">
+                    <label for="setting-start-hour">Start Hour (0-23)</label>
+                    <input type="number" id="setting-start-hour" min="0" max="23" required>
+                </div>
+                <div class="form-group">
+                    <label for="setting-end-hour">End Hour (1-24)</label>
+                    <input type="number" id="setting-end-hour" min="1" max="24" required>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" id="settings-cancel">Cancel</button>
+                    <button type="submit" class="btn primary">Apply</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="team-export-modal" class="modal hidden">
+        <div class="modal-content">
+            <h2>Export Team Schedule</h2>
+            <form id="team-export-form">
+                <div class="form-group">
+                    <label for="export-team-select">Select Team</label>
+                    <select id="export-team-select" required>
+                        <option value="">-- Select Team --</option>
+                    </select>
+                </div>
+                <!-- Preview area could go here, but keeping it simple for now -->
+                <div class="modal-actions">
+                    <button type="button" id="team-export-cancel">Cancel</button>
+                    <button type="submit" class="btn primary">Download Image</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
