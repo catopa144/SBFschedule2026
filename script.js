@@ -1203,6 +1203,15 @@ class ScheduleApp {
     async generateSpecializedExport(acts, title, subtitle, extraInfo = '') {
         // Sort
         acts.sort((a, b) => {
+            // Primary Sort: Stage Index (Day 1, Day 2...)
+            const stageIndexA = this.state.stages.findIndex(s => s.id === a.stageId);
+            const stageIndexB = this.state.stages.findIndex(s => s.id === b.stageId);
+
+            if (stageIndexA !== stageIndexB) {
+                return stageIndexA - stageIndexB;
+            }
+
+            // Secondary Sort: Time
             const [aH, aM] = a.startTime.split(':').map(Number);
             const [bH, bM] = b.startTime.split(':').map(Number);
             return (aH * 60 + aM) - (bH * 60 + bM);
