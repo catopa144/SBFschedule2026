@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SBF Schedule Editor</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Noto+Serif+JP:wght@700;900&family=Roboto+Slab:wght@400;700&display=swap"
+        rel="stylesheet">
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="logo">
+                <h1>Sendai <span>Barbershop</span> Festival</h1>
+            </div>
+            <div class="header-actions">
+                <button id="add-act-btn" class="btn primary">＋ Add Act</button>
+                <button id="add-stage-btn" class="btn secondary">＋ Stage</button>
+                <div class="divider-vertical"></div>
+                <button id="manage-members-btn" class="btn outline" title="Manage Members">👥 Members</button>
+                <div class="divider-vertical"></div>
+                <button id="export-btn" class="btn secondary">Export Image</button>
+                <button id="export-team-btn" class="btn secondary">Export Team</button>
+                <button id="export-member-btn" class="btn secondary">Export Individual</button>
+                <div class="divider-vertical"></div>
+                <button id="settings-btn" class="btn outline" title="Settings">⚙️</button>
+                <button id="save-project-btn" class="btn outline" title="Save Project">💾</button>
+                <button id="load-project-btn" class="btn outline" title="Load Project">📂</button>
+                <button id="reset-btn" class="btn danger" title="Reset All">🗑️</button>
+                <input type="file" id="project-upload" accept=".json" style="display: none;">
+            </div>
+        </header>
+
+        <!-- Workspace -->
+        <div class="timetable-workspace" id="capture-target">
+            <!-- Time Axis -->
+            <div class="time-axis-container">
+                <div class="time-labels" id="time-labels"></div>
+            </div>
+
+            <!-- Stages -->
+            <div class="stages-container" id="stages-container">
+                <!-- Stages injected by JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Modals -->
+
+    <!-- Edit Act Modal -->
+    <div id="edit-modal" class="modal hidden">
+        <div class="modal-content">
+            <h2>Edit Act</h2>
+            <form id="act-form">
+                <input type="hidden" id="act-id">
+                <div class="form-group">
+                    <label>Act Name</label>
+                    <input type="text" id="act-name" required placeholder="e.g. Quartet Name">
+                </div>
+                <div class="form-group">
+                    <label>Team / Category (Comma separated)</label>
+                    <input type="text" id="act-category" placeholder="e.g. Team A, Team B">
+                </div>
+                <div class="form-group" style="display: flex; gap: 10px;">
+                    <div style="flex:1;">
+                        <label>Start Time</label>
+                        <input type="time" id="act-start" required>
+                    </div>
+                    <div style="flex:1;">
+                        <label>End Time</label>
+                        <input type="time" id="act-end" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Color</label>
+                    <input type="color" id="act-color" style="height: 40px; padding: 2px;">
+                </div>
+                <div class="modal-actions">
+                    <button type="button" id="modal-delete" class="btn danger">Delete</button>
+                    <button type="button" id="modal-cancel" class="btn outline">Cancel</button>
+                    <button type="submit" class="btn primary">Save Act</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div id="settings-modal" class="modal hidden">
+        <div class="modal-content">
+            <h2>Settings</h2>
+            <form id="settings-form">
+                <div class="form-group">
+                    <label>Start Hour (0-23)</label>
+                    <input type="number" id="setting-start-hour" min="0" max="23" required>
+                </div>
+                <div class="form-group">
+                    <label>End Hour (0-24)</label>
+                    <input type="number" id="setting-end-hour" min="1" max="24" required>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" id="settings-cancel" class="btn outline">Cancel</button>
+                    <button type="submit" class="btn primary">Apply</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Team Export Modal -->
+    <div id="team-export-modal" class="modal hidden">
+        <div class="modal-content">
+            <h2>Export Team Schedule</h2>
+            <p style="color: #9ca3af; margin-bottom: 20px; font-size: 0.9rem;">Select a team to generate a dedicated
+                schedule card.</p>
+            <form id="team-export-form">
+                <div class="form-group">
+                    <label>Select Team</label>
+                    <select id="export-team-select"
+                        style="width: 100%; padding: 10px; border-radius: 8px; background: #0f172a; color: white; border: 1px solid rgba(255,255,255,0.2);">
+                        <!-- Options populated by JS -->
+                    </select>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" id="team-export-cancel" class="btn outline">Cancel</button>
+                    <button type="submit" class="btn primary">Generate Image</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Member Management Modal -->
+    <div id="members-modal" class="modal hidden">
+        <div class="modal-content" style="width: 600px; max-width: 90vw;">
+            <h2>Manage Members</h2>
+
+            <!-- List -->
+            <div
+                style="max-height: 300px; overflow-y: auto; margin-bottom: 20px; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px;">
+                <table style="width: 100%; border-collapse: collapse;">
+                    <thead style="background: rgba(255,255,255,0.05); position: sticky; top: 0;">
+                        <tr>
+                            <th style="padding: 10px; text-align: left;">Name</th>
+                            <th style="padding: 10px; text-align: left;">Teams</th>
+                            <th style="padding: 10px;"></th>
+                        </tr>
+                    </thead>
+                    <tbody id="members-list-body">
+                        <!-- Populated by JS -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Add/Edit Form -->
+            <form id="add-member-form" style="background: rgba(0,0,0,0.2); padding: 15px; border-radius: 8px;">
+                <input type="hidden" id="member-id">
+                <div style="display: flex; gap: 10px;">
+                    <div style="flex: 1;">
+                        <input type="text" id="member-name" placeholder="Name" required
+                            style="width: 100%; padding: 8px; border-radius: 4px; border: 1px solid #444; background: #222; color: white;">
+                    </div>
+                    <div style="flex: 1;">
+                        <input type="text" id="member-teams" placeholder="Teams (comma separated)"
+                            style="width: 100%; padding: 8px; border-radius: 4px; border: 1px solid #444; background: #222; color: white;">
+                    </div>
+                    <button type="submit" class="btn primary" style="padding: 8px 16px;">Save</button>
+                </div>
+                <div style="display: flex; justify-content: space-between; margin-top: 10px;">
+                    <button type="button" id="member-delete" class="btn danger"
+                        style="padding: 4px 10px; font-size: 0.8rem; display: none;">Delete</button>
+                    <button type="button" id="member-clear" class="btn outline"
+                        style="padding: 4px 10px; font-size: 0.8rem;">Clear Form</button>
+                </div>
+            </form>
+
+            <div class="modal-actions">
+                <button type="button" id="members-close" class="btn outline">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Export Individual Modal -->
+    <div id="individual-export-modal" class="modal hidden">
+        <div class="modal-content">
+            <h2>Export Individual Schedule</h2>
+            <p style="color: #9ca3af; margin-bottom: 20px; font-size: 0.9rem;">Select a member to generate their
+                personal schedule.</p>
+            <form id="individual-export-form">
+                <div class="form-group">
+                    <label>Select Member</label>
+                    <select id="export-member-select"
+                        style="width: 100%; padding: 10px; border-radius: 8px; background: #0f172a; color: white; border: 1px solid rgba(255,255,255,0.2);">
+                        <!-- Options populated by JS -->
+                    </select>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" id="individual-export-cancel" class="btn outline">Cancel</button>
+                    <button type="submit" class="btn primary">Generate Image</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

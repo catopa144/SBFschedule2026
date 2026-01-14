@@ -1,0 +1,90 @@
+{
+  "config": {
+    "startHour": 10,
+    "endHour": 22
+  },
+  "stages": [
+    {
+      "id": "stage-1",
+      "name": "Day1"
+    },
+    {
+      "id": "stage-2",
+      "name": "Day2"
+    }
+  ],
+  "acts": [
+    {
+      "id": "act-1",
+      "stageId": "stage-1",
+      "name": "Pioniereリハーサル",
+      "startTime": "10:45",
+      "endTime": "11:30",
+      "color": "#3b82f6",
+      "category": "Pioniere"
+    },
+    {
+      "id": "act-1767264350836",
+      "stageId": "stage-1",
+      "name": "Dream Quartet練習会",
+      "category": "Dream Quartet",
+      "startTime": "12:00",
+      "endTime": "13:30",
+      "color": "#ff0000"
+    },
+    {
+      "id": "act-1767264392253",
+      "stageId": "stage-1",
+      "name": "Dream Quartet練習会②",
+      "category": "Dream Quartet",
+      "startTime": "13:30",
+      "endTime": "15:00",
+      "color": "#ff0000"
+    },
+    {
+      "id": "act-1767264445479",
+      "stageId": "stage-1",
+      "name": "OPコーラス全体合わせ",
+      "category": "Pioniere, Orca Rhapsodia, After Times, Exits, Ultra L, Squash!, HanaYashiki, Harmonix Junction, Full City, Sugarlight, Snappy's, Tokyo Vocal Express",
+      "startTime": "15:30",
+      "endTime": "16:00",
+      "color": "#10b981"
+    },
+    {
+      "id": "act-1767265793673",
+      "stageId": "stage-1",
+      "name": "第1ステージ SBF Showcase",
+      "category": "Vocal Tompectrum, Exits, Orca Rhapsodia, Squash!, 渡邉歌劇団, Ultra L, F.F.",
+      "startTime": "18:32",
+      "endTime": "19:10",
+      "color": "#8b5cf6"
+    },
+    {
+      "id": "act-1767265903313",
+      "stageId": "stage-1",
+      "name": "第2ステージ　Mixed&College",
+      "category": "Harmonix Junction, Hamo Hamo Mix, Sugarlight, Brens Beats Quartet, HanaYashiki, Full City",
+      "startTime": "19:10",
+      "endTime": "19:56",
+      "color": "#f59e0b"
+    },
+    {
+      "id": "act-1767266014354",
+      "stageId": "stage-1",
+      "name": "第3ステージ New Quartet",
+      "category": "Snappy's, ちゃるめら企画, うなぎやカルテット",
+      "startTime": "20:11",
+      "endTime": "20:55",
+      "color": "#3b82f6"
+    },
+    {
+      "id": "act-1767266064720",
+      "stageId": "stage-1",
+      "name": "第4ステージ　Chorus Stage",
+      "category": "Pioniere, Tokyo Vocal Express",
+      "startTime": "20:55",
+      "endTime": "21:15",
+      "color": "#ec4899"
+    }
+  ]
+}
