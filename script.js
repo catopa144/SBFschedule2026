@@ -23,23 +23,568 @@ class ScheduleApp {
 
         // Default State
         this.state = {
-            config: { startHour: 9, endHour: 22 },
-            stages: [
-                { id: 'stage-1', name: 'Main Stage' },
-                { id: 'stage-2', name: 'Second Stage' }
-            ],
-            acts: [
+            "config": {
+                "startHour": 9,
+                "endHour": 22
+            },
+            "stages": [
                 {
-                    id: 'act-1',
-                    stageId: 'stage-1',
-                    name: 'Opening Act',
-                    startTime: '10:00',
-                    endTime: '11:00',
-                    color: '#3b82f6',
-                    category: ''
+                    "id": "stage-1",
+                    "name": "Day1"
+                },
+                {
+                    "id": "stage-2",
+                    "name": "Day2"
                 }
             ],
-            members: []
+            "acts": [
+                {
+                    "id": "act-1",
+                    "stageId": "stage-1",
+                    "name": "Pioniereリハーサル",
+                    "startTime": "10:45",
+                    "endTime": "11:30",
+                    "color": "#3b82f6",
+                    "category": "Pioniere"
+                },
+                {
+                    "id": "act-1767264350836",
+                    "stageId": "stage-1",
+                    "name": "Dream Quartet練習会",
+                    "category": "Dream Quartet",
+                    "startTime": "12:00",
+                    "endTime": "13:30",
+                    "color": "#ff0000"
+                },
+                {
+                    "id": "act-1767264392253",
+                    "stageId": "stage-1",
+                    "name": "Dream Quartet練習会②",
+                    "category": "Dream Quartet",
+                    "startTime": "13:30",
+                    "endTime": "15:00",
+                    "color": "#ff0000"
+                },
+                {
+                    "id": "act-1767264445479",
+                    "stageId": "stage-1",
+                    "name": "OPコーラス全体合わせ",
+                    "category": "Pioniere, Orca Rhapsodia, After Times, Exits, Ultra L, Squash!, HanaYashiki, Harmonix Junction, Full City, Sugarlight, Snappy's, Tokyo Vocal Express, Coiffeur, Malwoofer, しなもん",
+                    "startTime": "15:30",
+                    "endTime": "16:00",
+                    "color": "#10b981"
+                },
+                {
+                    "id": "act-1767265793673",
+                    "stageId": "stage-1",
+                    "name": "第1ステージ SBF Showcase",
+                    "category": "Vocal Tompectrum, Exits, Orca Rhapsodia, Squash!, 渡邉歌劇団, Ultra L, F.F.",
+                    "startTime": "18:32",
+                    "endTime": "19:10",
+                    "color": "#8b5cf6"
+                },
+                {
+                    "id": "act-1767265903313",
+                    "stageId": "stage-1",
+                    "name": "第2ステージ　Mixed&College",
+                    "category": "Harmonix Junction, Hamo Hamo Mix, Sugarlight, Brens Beats Quartet, HanaYashiki, Full City",
+                    "startTime": "19:10",
+                    "endTime": "19:56",
+                    "color": "#f59e0b"
+                },
+                {
+                    "id": "act-1767266014354",
+                    "stageId": "stage-1",
+                    "name": "第3ステージ New Quartet",
+                    "category": "Snappy's, ちゃるめら企画, うなぎやカルテット",
+                    "startTime": "20:11",
+                    "endTime": "20:55",
+                    "color": "#3b82f6"
+                },
+                {
+                    "id": "act-1767266064720",
+                    "stageId": "stage-1",
+                    "name": "第4ステージ　Chorus Stage",
+                    "category": "Pioniere, Tokyo Vocal Express",
+                    "startTime": "20:55",
+                    "endTime": "21:15",
+                    "color": "#ec4899"
+                },
+                {
+                    "id": "act-1768392426956",
+                    "stageId": "stage-2",
+                    "name": "Dream Quartet発表会@戦災復興記念館",
+                    "category": "Dream Quartet",
+                    "startTime": "13:00",
+                    "endTime": "15:00",
+                    "color": "#f73b45"
+                },
+                {
+                    "id": "act-1768392481261",
+                    "stageId": "stage-2",
+                    "name": "OP, EDコーラス練習",
+                    "category": "Pioniere, Orca Rhapsodia, After Times, Exits, Ultra L, Squash!, HanaYashiki, Harmonix Junction, Full City, Sugarlight, Snappy's, Tokyo Vocal Express",
+                    "startTime": "15:00",
+                    "endTime": "16:00",
+                    "color": "#f59e0b"
+                },
+                {
+                    "id": "act-1768392675314",
+                    "stageId": "stage-2",
+                    "name": "開演・挨拶",
+                    "category": "Pioniere, Orca Rhapsodia, After Times, Exits, Ultra L, Squash!, HanaYashiki, Harmonix Junction, Full City, Sugarlight, Snappy's, Tokyo Vocal Express, Coiffeur, Malwoofer",
+                    "startTime": "18:30",
+                    "endTime": "18:45",
+                    "color": "#10b981"
+                }
+            ],
+            "members": [
+                {
+                    "id": "mem-1768373600342",
+                    "name": "あさの",
+                    "teams": [
+                        "渡邉歌劇団",
+                        "Pioniere"
+                    ]
+                },
+                {
+                    "id": "mem-1768372678177",
+                    "name": "ふみちゃん",
+                    "teams": [
+                        "F.F.",
+                        "Pioniere"
+                    ]
+                },
+                {
+                    "id": "mem-1768373837687",
+                    "name": "ふなけん",
+                    "teams": [
+                        "Harmonix Junction",
+                        "Pioniere"
+                    ]
+                },
+                {
+                    "id": "mem-1768373765425",
+                    "name": "ハルヒ",
+                    "teams": [
+                        "Harmonix Junction",
+                        "Pioniere"
+                    ]
+                },
+                {
+                    "id": "mem-1768373735337",
+                    "name": "ひかる",
+                    "teams": [
+                        "渡邉歌劇団",
+                        "Pioniere"
+                    ]
+                },
+                {
+                    "id": "mem-1768372693834",
+                    "name": "到",
+                    "teams": [
+                        "F.F.",
+                        "Pioniere",
+                        "Full City"
+                    ]
+                },
+                {
+                    "id": "mem-1768373677681",
+                    "name": "泉",
+                    "teams": [
+                        "渡邉歌劇団",
+                        "Pioniere"
+                    ]
+                },
+                {
+                    "id": "mem-1768373785598",
+                    "name": "Junk",
+                    "teams": [
+                        "Harmonix Junction",
+                        "Pioniere"
+                    ]
+                },
+                {
+                    "id": "mem-1768372135638",
+                    "name": "かとぱい",
+                    "teams": [
+                        "Vocal Tompectrum",
+                        "Pioniere"
+                    ]
+                },
+                {
+                    "id": "mem-1768372661898",
+                    "name": "シャイニー",
+                    "teams": [
+                        "F.F.",
+                        "Pioniere",
+                        "Sugarlight"
+                    ]
+                },
+                {
+                    "id": "mem-1768372633183",
+                    "name": "てんぴー",
+                    "teams": [
+                        "Vocal Tompectrum",
+                        "Pioniere",
+                        "Blends Beats Quartet",
+                        "Hamo Hamo Mix",
+                        "Full City"
+                    ]
+                },
+                {
+                    "id": "mem-1768372180638",
+                    "name": "おぼぼ",
+                    "teams": [
+                        "Vocal Tompectrum",
+                        "Pioniere",
+                        "Sugarlight"
+                    ]
+                },
+                {
+                    "id": "mem-1768372578749",
+                    "name": "yst",
+                    "teams": [
+                        "Vocal Tompectrum",
+                        "Pioniere"
+                    ]
+                },
+                {
+                    "id": "mem-1768373689529",
+                    "name": "ざと",
+                    "teams": [
+                        "渡邉歌劇団",
+                        "Pioniere"
+                    ]
+                },
+                {
+                    "id": "mem-1768374528293",
+                    "name": "せびー",
+                    "teams": [
+                        "Orca Rhapsodia",
+                        "Blends Beats Quartet"
+                    ]
+                },
+                {
+                    "id": "mem-1768374543476",
+                    "name": "ねーさん",
+                    "teams": [
+                        "Orca Rhapsodia",
+                        "Pioniere"
+                    ]
+                },
+                {
+                    "id": "mem-1768374562344",
+                    "name": "なるなる",
+                    "teams": [
+                        "Orca Rhapsodia"
+                    ]
+                },
+                {
+                    "id": "mem-1768374597584",
+                    "name": "べみ",
+                    "teams": [
+                        "Orca Rhapsodia",
+                        "Blends Beats Quartet"
+                    ]
+                },
+                {
+                    "id": "mem-1768374693973",
+                    "name": "ちゃるめら",
+                    "teams": [
+                        "After Times",
+                        "ちゃるめら企画"
+                    ]
+                },
+                {
+                    "id": "mem-1768374765055",
+                    "name": "コバック",
+                    "teams": [
+                        "After Times"
+                    ]
+                },
+                {
+                    "id": "mem-1768374777890",
+                    "name": "まーちん",
+                    "teams": [
+                        "After Times"
+                    ]
+                },
+                {
+                    "id": "mem-1768374790201",
+                    "name": "ひでひで",
+                    "teams": [
+                        "After Times"
+                    ]
+                },
+                {
+                    "id": "mem-1768374828449",
+                    "name": "Joe",
+                    "teams": [
+                        "F.F.",
+                        "Pioniere",
+                        "Hamo Hamo Mix"
+                    ]
+                },
+                {
+                    "id": "mem-1768392966002",
+                    "name": "ハルキ",
+                    "teams": [
+                        "東北大B1(仮)"
+                    ]
+                },
+                {
+                    "id": "mem-1768392973394",
+                    "name": "たかひと",
+                    "teams": [
+                        "東北大B1(仮)"
+                    ]
+                },
+                {
+                    "id": "mem-1768392984651",
+                    "name": "円谷",
+                    "teams": [
+                        "東北大B1(仮)"
+                    ]
+                },
+                {
+                    "id": "mem-1768393037914",
+                    "name": "昆野",
+                    "teams": [
+                        "Harmonix Junction"
+                    ]
+                },
+                {
+                    "id": "mem-1768393078066",
+                    "name": "いわみず",
+                    "teams": [
+                        "Exits"
+                    ]
+                },
+                {
+                    "id": "mem-1768393087566",
+                    "name": "出口",
+                    "teams": [
+                        "Exits"
+                    ]
+                },
+                {
+                    "id": "mem-1768393166438",
+                    "name": "ニック",
+                    "teams": [
+                        "Squash!",
+                        "Exits"
+                    ]
+                },
+                {
+                    "id": "mem-1768393178554",
+                    "name": "ひろむ",
+                    "teams": [
+                        "Squash!"
+                    ]
+                },
+                {
+                    "id": "mem-1768393204719",
+                    "name": "らじえる",
+                    "teams": [
+                        "Squash!"
+                    ]
+                },
+                {
+                    "id": "mem-1768393222666",
+                    "name": "Daiki",
+                    "teams": [
+                        "Squash!"
+                    ]
+                },
+                {
+                    "id": "mem-1768393268170",
+                    "name": "Teru",
+                    "teams": [
+                        "Vagabonds"
+                    ]
+                },
+                {
+                    "id": "mem-1768393275059",
+                    "name": "さとあつ",
+                    "teams": [
+                        "Vagabonds"
+                    ]
+                },
+                {
+                    "id": "mem-1768393287393",
+                    "name": "けんと",
+                    "teams": [
+                        "Vagabonds"
+                    ]
+                },
+                {
+                    "id": "mem-1768393298941",
+                    "name": "シイナ",
+                    "teams": [
+                        "Vagabonds"
+                    ]
+                },
+                {
+                    "id": "mem-1768393327711",
+                    "name": "はまはま",
+                    "teams": [
+                        "Ultra L"
+                    ]
+                },
+                {
+                    "id": "mem-1768393346495",
+                    "name": "Marina",
+                    "teams": [
+                        "Ultra L"
+                    ]
+                },
+                {
+                    "id": "mem-1768393355658",
+                    "name": "とくちゃん",
+                    "teams": [
+                        "Ultra L"
+                    ]
+                },
+                {
+                    "id": "mem-1768393369766",
+                    "name": "めろこ",
+                    "teams": [
+                        "Ultra L",
+                        "Tokyo Vocal Express"
+                    ]
+                },
+                {
+                    "id": "mem-1768393406727",
+                    "name": "清水",
+                    "teams": [
+                        "HanaYashiki"
+                    ]
+                },
+                {
+                    "id": "mem-1768393438849",
+                    "name": "やっしー",
+                    "teams": [
+                        "HanaYashiki"
+                    ]
+                },
+                {
+                    "id": "mem-1768393570936",
+                    "name": "花岡",
+                    "teams": [
+                        "HanaYashiki"
+                    ]
+                },
+                {
+                    "id": "mem-1768393615589",
+                    "name": "のっぺ",
+                    "teams": [
+                        "Hamo Hamo Mix",
+                        "Full City",
+                        "Pioniere"
+                    ]
+                },
+                {
+                    "id": "mem-1768393619711",
+                    "name": "富田",
+                    "teams": [
+                        "Full City"
+                    ]
+                },
+                {
+                    "id": "mem-1768393741589",
+                    "name": "ほのか",
+                    "teams": [
+                        "しなもん"
+                    ]
+                },
+                {
+                    "id": "mem-1768393751961",
+                    "name": "ななこ",
+                    "teams": [
+                        "しなもん"
+                    ]
+                },
+                {
+                    "id": "mem-1768393768076",
+                    "name": "かのん",
+                    "teams": [
+                        "しなもん"
+                    ]
+                },
+                {
+                    "id": "mem-1768393780342",
+                    "name": "このは",
+                    "teams": [
+                        "しなもん"
+                    ]
+                },
+                {
+                    "id": "mem-1768393846589",
+                    "name": "えっこ",
+                    "teams": [
+                        "Snappy's",
+                        "Tokyo Vocal Express"
+                    ]
+                },
+                {
+                    "id": "mem-1768393853977",
+                    "name": "みちゃこ",
+                    "teams": [
+                        "Snappy's"
+                    ]
+                },
+                {
+                    "id": "mem-1768393926763",
+                    "name": "ゆいてぃん",
+                    "teams": [
+                        "Pioniere"
+                    ]
+                },
+                {
+                    "id": "mem-1768393981074",
+                    "name": "みっちー",
+                    "teams": [
+                        "Coiffuer"
+                    ]
+                },
+                {
+                    "id": "mem-1768394007773",
+                    "name": "たっきー",
+                    "teams": [
+                        "Coiffeur"
+                    ]
+                },
+                {
+                    "id": "mem-1768394120128",
+                    "name": "純",
+                    "teams": [
+                        "Coiffuer"
+                    ]
+                },
+                {
+                    "id": "mem-1768394131555",
+                    "name": "もじゃ",
+                    "teams": [
+                        "Coiffuer"
+                    ]
+                },
+                {
+                    "id": "mem-1768394151054",
+                    "name": "おかちゃん",
+                    "teams": [
+                        "Tokyo Vocal Express",
+                        "Pioniere"
+                    ]
+                },
+                {
+                    "id": "mem-1768394188421",
+                    "name": "うなぎや",
+                    "teams": [
+                        "うなぎやカルテット"
+                    ]
+                }
+            ]
         };
 
         // Cache DOM Elements
