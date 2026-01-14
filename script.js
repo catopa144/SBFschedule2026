@@ -3,6 +3,13 @@
  * Class-based architecture for stability and modularity.
  */
 
+// Debug: Catch global errors to help identify issues on remote devices/GitHub
+window.onerror = function (msg, url, line, col, error) {
+    // Ignore harmless resizing errors or extensions
+    if (msg.includes('ResizeObserver')) return;
+    alert(`Error: ${msg}\nLine: ${line}\nCol: ${col}`);
+};
+
 class ScheduleApp {
     constructor() {
         // Configuration
